@@ -5,18 +5,7 @@ import { Download, Filter, FileText } from "lucide-react";
 import { getTransactions } from "@/app/actions/transaction.actions";
 import { createClient } from "@/lib/supabase/server";
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
-import { Skeleton } from "@/components/ui/skeleton";
-
-const CashflowChart = dynamic(() => import("@/components/dashboard/CashflowChart").then(mod => mod.CashflowChart), {
-  ssr: false,
-  loading: () => <Skeleton className="h-[400px] w-full rounded-xl" />
-});
-
-const CategoryPieChart = dynamic(() => import("@/components/dashboard/CategoryPieChart").then(mod => mod.CategoryPieChart), {
-  ssr: false,
-  loading: () => <Skeleton className="h-[400px] w-full rounded-xl" />
-});
+import { CashflowChart, CategoryPieChart } from "@/components/dashboard/DynamicCharts";
 
 export const metadata: Metadata = {
   title: "Reports",

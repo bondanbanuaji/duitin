@@ -7,18 +7,7 @@ import { getDashboardMetrics, getTransactions } from "@/app/actions/transaction.
 import { getBudgets } from "@/app/actions/budget.actions";
 import { createClient } from "@/lib/supabase/server";
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
-import { Skeleton } from "@/components/ui/skeleton";
-
-const CashflowChart = dynamic(() => import("@/components/dashboard/CashflowChart").then(mod => mod.CashflowChart), {
-  ssr: false,
-  loading: () => <Skeleton className="h-full w-full rounded-lg" />
-});
-
-const CategoryPieChart = dynamic(() => import("@/components/dashboard/CategoryPieChart").then(mod => mod.CategoryPieChart), {
-  ssr: false,
-  loading: () => <Skeleton className="h-full w-full rounded-lg" />
-});
+import { CashflowChart, CategoryPieChart } from "@/components/dashboard/DynamicCharts";
 
 export const metadata: Metadata = {
   title: "Dashboard",
